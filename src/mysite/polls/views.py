@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Question
 
@@ -24,6 +25,10 @@ def results(request, question_id):
     return HttpResponse(response % question_id)
 
 def vote(request, question_id):
+        question = get_object_or_404(Question, pk=)
+    try:
+    except Question.DoesNotExist:
+        raise Http404()
     return HttpResponse("You're voting on question %s." % question_id)
 
 
